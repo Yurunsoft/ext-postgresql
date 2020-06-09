@@ -382,7 +382,7 @@ static void swoole_pgsql_coro_onTimeout(swTimer *timer, swTimer_node *tnode)
     // cancel outgoing command
     case CONNECTION_OK:
         PQrequestCancel(pgsql);
-        swoole_event_del(object->fd);
+        swoole_event_del(object->socket);
         feedback = " query time out..";
         break;
 
