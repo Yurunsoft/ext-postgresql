@@ -613,7 +613,7 @@ static int query_result_parse(pg_object *object)
 
         PQclear(pgsql_result);
         ZVAL_FALSE(&return_value);
-        swoole_event_del(object->fd);
+        swoole_event_del(object->socket);
 
         ret = PHPCoroutine::resume_m(context, &return_value, retval);
         if (ret == SW_CORO_ERR_END && retval)
